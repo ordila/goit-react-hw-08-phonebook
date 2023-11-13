@@ -1,35 +1,34 @@
 import React from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { setData, setDataInitialState } from 'components/redux/dataReducer';
 
 const ContactForm = ({ onAdd, onCheckUnique }) => {
-  const data = useSelector(state => state.data);
   const dispatch = useDispatch();
 
-  const onChangeInput = event => {
-    const { name, value } = event.target;
-    dispatch(setData({ [name]: value }));
+  const formatPhoneNumber = event => {
+    const input = event.target;
+    let value = input.value.replace(/\D/g, ''); // Remove non-digit characters
+
+    if (value.length > 6) {
+      value = `${value.slice(0, 3)}-${value.slice(3, 5)}-${value.slice(5, 7)}`;
+    }
+
+    input.value = value;
   };
 
   const handleFormSubmit = event => {
     event.preventDefault();
-    const { name, phone } = data;
 
-    const isValidateForm = validateForm();
-    if (!isValidateForm) return;
-    onAdd({ name, phone });
-    dispatch(setDataInitialState());
-  };
-  const validateForm = () => {
-    const { name, phone } = data;
-    if (!name || !phone) {
+    const name = event.currentTarget.elements.name.value;
+    const number = event.currentTarget.elements.phone.value;
+
+    if (!name || !number) {
       alert('Заповніть усі поля');
       return false;
     }
 
     if (onCheckUnique(name)) {
-      return true;
+      onAdd({ name, number });
     } else {
       alert('Контакт вже існує');
       return false;
@@ -38,18 +37,8 @@ const ContactForm = ({ onAdd, onCheckUnique }) => {
 
   return (
     <form onSubmit={handleFormSubmit}>
-      <input
-        type="text"
-        value={data.name}
-        name="name"
-        onChange={onChangeInput}
-      />
-      <input
-        type="tel"
-        value={data.phone}
-        name="phone"
-        onChange={onChangeInput}
-      />
+      <input type="text" required name="name" />
+      <input type="tel" required name="phone" onChange={formatPhoneNumber} />
       <button type="submit">Додати</button>
     </form>
   );

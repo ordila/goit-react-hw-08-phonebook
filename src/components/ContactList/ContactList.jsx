@@ -1,10 +1,10 @@
-const ContactListItem = ({ name, phone, onRemove, id }) => {
+const ContactListItem = ({ name, number, onRemove, id }) => {
   const handleRemoveClick = () => {
     onRemove(id);
   };
   return (
     <li>
-      {name} : {phone} <button onClick={handleRemoveClick}>Delete</button>
+      {name} : {number} <button onClick={handleRemoveClick}>Delete</button>
     </li>
   );
 };
