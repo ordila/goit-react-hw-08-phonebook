@@ -1,4 +1,3 @@
-import { userLogIn, userSignUp } from 'components/services/Api';
 import {
   currentUserThunk,
   loginUserThunk,
