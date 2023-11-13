@@ -8,7 +8,7 @@ import {
   userLogIn,
   userLogOut,
   userSignUp,
-} from 'components/services/Api.js';
+} from 'components/services/userApi.js';
 
 export const requestContactsThunk = createAsyncThunk(
   'contact/fetchContacts',
