@@ -1,6 +1,10 @@
 @import-normalize; /* bring in normalize.css styles */
-
+html {
+  height: 100%;
+}
 body {
+  height: 100%;
+  background-color: RGB(23, 36, 55);
   font-family: sans-serif;
   line-height: 1.5;
 }
@@ -25,4 +29,7 @@ img {
   display: block;
   max-width: 100%;
   height: auto;
+}
+a {
+  text-decoration: none;
 }

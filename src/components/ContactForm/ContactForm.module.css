@@ -1,0 +1,18 @@
+.form_contacts {
+}
+.input {
+  width: 350px;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: RGB(18, 27, 41);
+  color: #fff;
+  outline: none;
+  display: block;
+}
+
+input[type='text'],
+input[type='tel'] {
+  font-size: 16px;
+}

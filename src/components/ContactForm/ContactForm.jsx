@@ -1,10 +1,7 @@
 import React from 'react';
-
-import { useDispatch, useSelector } from 'react-redux';
-
+import css from './ContactForm.module.css';
+import { Button } from '@mui/material';
 const ContactForm = ({ onAdd, onCheckUnique }) => {
-  const dispatch = useDispatch();
-
   const formatPhoneNumber = event => {
     const input = event.target;
     let value = input.value.replace(/\D/g, ''); // Remove non-digit characters
@@ -36,11 +33,35 @@ const ContactForm = ({ onAdd, onCheckUnique }) => {
   };
 
   return (
-    <form onSubmit={handleFormSubmit}>
-      <input type="text" required name="name" />
-      <input type="tel" required name="phone" onChange={formatPhoneNumber} />
-      <button type="submit">Додати</button>
-    </form>
+    <>
+      <form className={css.form_contacts} onSubmit={handleFormSubmit}>
+        <label htmlFor="name">Name</label>
+        <input
+          id="name"
+          className={css.input}
+          type="text"
+          required
+          name="name"
+        />
+        <label htmlFor="phone">Phone</label>
+
+        <input
+          className={css.input}
+          type="tel"
+          required
+          name="phone"
+          onChange={formatPhoneNumber}
+        />
+        <Button
+          variant="outlined"
+          className={css.button_logOut}
+          sx={{ color: '#fff' }}
+          type="submit"
+        >
+          Add contact
+        </Button>
+      </form>
+    </>
   );
 };
 

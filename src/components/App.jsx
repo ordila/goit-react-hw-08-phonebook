@@ -1,46 +1,78 @@
 import React, { Suspense, lazy, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { Link, Route, Routes } from 'react-router-dom';
-import ButtonLogOut from './ButtonLogOut/ButtonLogOut';
-import { currentUserThunk } from './redux/thunk';
-import Home from './pages/Home';
+import Home from './pages/Home/Home';
+import css from './app.module.css';
+import { NavLink, Route, Routes } from 'react-router-dom';
 
-const Contacts = lazy(() => import('./pages/Contacts'));
-const Login = lazy(() => import('./pages/Login'));
-const Register = lazy(() => import('./pages/Register'));
+import { currentUserThunk } from './redux/thunk';
+import ButtonLogOut from './ButtonLogOut/ButtonLogOut';
+
+const Contacts = lazy(() => import('./pages/Contacts/Contacts'));
+const Login = lazy(() => import('./pages/Login/Login'));
+const Register = lazy(() => import('./pages/Register/Register'));
 
 export const App = () => {
   const dispatch = useDispatch();
-  const userData = useSelector(state => state.user.userData);
 
   useEffect(() => {
     dispatch(currentUserThunk());
   }, [dispatch]);
+  const userData = useSelector(state => state.user.userData);
+
   return (
-    <>
-      <nav>
-        <Link to="/">Home</Link>
+    <div className={css.container}>
+      <nav className={css.navigation_bar}>
+        <NavLink
+          className={({ isActive }) =>
+            isActive ? `${css.active} ${css.link}` : css.link
+          }
+          to="/"
+        >
+          Home
+        </NavLink>
         {userData ? (
           <>
-            <Link to="/contacts">Contacts</Link>
+            <NavLink
+              className={({ isActive }) =>
+                isActive ? `${css.active} ${css.link}` : css.link
+              }
+              to="/contacts"
+            >
+              Contacts
+            </NavLink>
             <ButtonLogOut />
           </>
         ) : (
-          <>
-            <Link to="/registration">Registration</Link>
-            <Link to="/login">Login</Link>
-          </>
+          <div className={css.login_registration_links}>
+            <NavLink
+              className={({ isActive }) =>
+                isActive ? `${css.active} ${css.link}` : css.link
+              }
+              to="registration"
+            >
+              Registration
+            </NavLink>
+            <NavLink
+              className={({ isActive }) =>
+                isActive ? `${css.active} ${css.link}` : css.link
+              }
+              to="login"
+            >
+              Login
+            </NavLink>
+          </div>
         )}
       </nav>
+
       <Suspense fallback={<h2>LOADING....</h2>}>
         <Routes>
-          <Route path="/" element={<Home></Home>} />
-          <Route path="/contacts" element={<Contacts></Contacts>} />
-          <Route path="/registration" element={<Register />} />
-          <Route path="/login" element={<Login />} />
+          <Route path="/" element={<Home />} />
+          <Route path="contacts" element={<Contacts />} />
+          <Route path="registration" element={<Register />} />
+          <Route path="login" element={<Login />} />
         </Routes>
       </Suspense>
-    </>
+    </div>
   );
 };

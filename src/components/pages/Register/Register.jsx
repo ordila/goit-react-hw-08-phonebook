@@ -2,7 +2,8 @@ import { signUpUserThunk } from 'components/redux/thunk';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-
+import css from './Register.module.css';
+import { Button } from '@mui/material';
 const Register = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -25,10 +26,11 @@ const Register = () => {
 
   return (
     <div>
-      <form onSubmit={formSubmit}>
-        <label htmlFor="name">
-          <h2>Your name</h2>
+      <form className={css.register} onSubmit={formSubmit}>
+        <label className={css.label} htmlFor="name">
+          <p>Your name</p>
           <input
+            className={css.input}
             id="name"
             type="text"
             name="name"
@@ -36,9 +38,10 @@ const Register = () => {
             // required
           />
         </label>
-        <label htmlFor="email">
-          <h2>Your email</h2>
+        <label className={css.label} htmlFor="email">
+          <p>Your email</p>
           <input
+            className={css.input}
             id="email"
             type="email"
             name="email"
@@ -46,9 +49,10 @@ const Register = () => {
             // required
           />
         </label>
-        <label htmlFor="name">
-          <h2>Your password</h2>
+        <label className={css.label} htmlFor="name">
+          <p>Your password</p>
           <input
+            className={css.input}
             id="password"
             type="password"
             name="password"
@@ -57,7 +61,14 @@ const Register = () => {
             // minLength={7}
           />
         </label>
-        <button type="submit">Let`s go!</button>
+        <Button
+          className={css.button_registration}
+          sx={{ color: '#fff' }}
+          type="submit"
+          variant="outlined"
+        >
+          Let`s go!
+        </Button>
       </form>
     </div>
   );

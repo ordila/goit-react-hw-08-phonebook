@@ -1,0 +1,21 @@
+.subTitle {
+  color: white;
+  text-align: center;
+  font-size: 50px;
+}
+.form_wrapper {
+  color: white;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.filter {
+  margin-top: 40px;
+}
+.in_wrapper {
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+}

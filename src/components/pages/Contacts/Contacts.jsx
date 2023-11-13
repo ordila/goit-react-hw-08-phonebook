@@ -2,6 +2,7 @@ import withAuthRedirect from 'HOC/withAuthRedirect';
 import ContactForm from 'components/ContactForm/ContactForm';
 import ContactList from 'components/ContactList/ContactList';
 import Filter from 'components/Filter/Filter';
+import css from './Contacts.module.css';
 import {
   selectContact,
   selectFilter,
@@ -52,18 +53,17 @@ const Contacts = () => {
   }, [dispatch]);
 
   return (
-    <div>
-      {' '}
+    <div className={css.form_wrapper}>
       {!isLoading ? (
-        <div>
-          <h2>Contact Form</h2>
+        <div className={css.in_wrapper}>
+          <h2 className={css.subTitle}>CONTACT BOOK</h2>
           <ContactForm
             onAdd={handleAddContact}
             onCheckUnique={handleCheckUniqueContact}
           />
-          <h2>Filter</h2>
+
           <Filter filter={filter} onChange={handleFilterChange}></Filter>
-          <h2>Contacts</h2>
+          <h2 className={css.subTitle}>Contacts</h2>
           <ContactList
             contacts={visibleContacts}
             onRemove={handleRempveContact}

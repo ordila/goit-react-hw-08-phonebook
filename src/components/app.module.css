@@ -1,0 +1,31 @@
+.container {
+  max-width: 1200px;
+  padding: 0 20px;
+  margin: 0 auto;
+}
+.navigation_bar {
+  position: relative;
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  padding-bottom: 10px;
+  border-bottom: 1px solid white;
+}
+
+.login_registration_links {
+  display: flex;
+  align-items: center;
+
+  gap: 50px;
+  margin-left: auto;
+}
+.link {
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+.active {
+  padding: 5px 10px;
+  background-color: RGB(255, 69, 0);
+  border-radius: 5px;
+}

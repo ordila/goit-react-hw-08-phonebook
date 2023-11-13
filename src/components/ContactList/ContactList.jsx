@@ -1,10 +1,15 @@
+import { Button } from '@mui/material';
+import css from './ContactList.module.css';
 const ContactListItem = ({ name, number, onRemove, id }) => {
   const handleRemoveClick = () => {
     onRemove(id);
   };
   return (
-    <li>
-      {name} : {number} <button onClick={handleRemoveClick}>Delete</button>
+    <li className={css.contacts}>
+      {name} : {number}{' '}
+      <Button variant="outlined" onClick={handleRemoveClick}>
+        Delete
+      </Button>
     </li>
   );
 };

@@ -1,0 +1,20 @@
+.greeting {
+  margin: 200px auto 0;
+  text-align: center;
+  font-size: 50px;
+  color: white;
+}
+.greeting_btn {
+  padding: 5px 10px;
+  background-color: RGB(255, 69, 0);
+  border-radius: 5px;
+  color: white;
+  display: block;
+  width: 100px;
+  margin: 0 auto;
+  text-align: center;
+}
+.img_phone {
+  display: block;
+  margin: 20px auto 0;
+}

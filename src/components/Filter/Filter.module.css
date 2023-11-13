@@ -1,0 +1,13 @@
+.inputFilter {
+  width: 350px;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: RGB(18, 27, 41);
+  color: #fff;
+  outline: none;
+}
+.subTitle {
+  margin-top: 20px;
+}

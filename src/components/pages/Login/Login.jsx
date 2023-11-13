@@ -2,7 +2,20 @@ import { currentUserThunk, loginUserThunk } from 'components/redux/thunk';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import css from './Login.module.css';
+import { Button, TextField } from '@mui/material';
+import { createTheme } from '@mui/material/styles';
 
+const theme = createTheme({
+  palette: {
+    ochre: {
+      main: '#E3D026',
+      light: '#E9DB5D',
+      dark: '#A29415',
+      contrastText: '#242105',
+    },
+  },
+});
 const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -21,12 +34,14 @@ const Login = () => {
     dispatch(loginUserThunk({ email, password }));
     event.currentTarget.reset();
   };
+
   return (
-    <div>
+    <div className={css.login}>
       <form onSubmit={formSubmit}>
-        <label htmlFor="email">
-          <h2>Your email</h2>
+        <label className={css.label} htmlFor="email">
+          <p className={css.title_email}>Your email</p>
           <input
+            className={css.input}
             id="email"
             type="email"
             name="email"
@@ -34,9 +49,10 @@ const Login = () => {
             // required
           />
         </label>
-        <label htmlFor="name">
-          <h2>Your password</h2>
+        <label className={css.label} htmlFor="name">
+          <p className={css.title_password}>Your password</p>
           <input
+            className={css.input}
             id="password"
             type="password"
             name="password"
@@ -45,9 +61,18 @@ const Login = () => {
             // minLength={7}
           />
         </label>
-        <button type="submit">Let`s go!</button>
+        <Button
+          className={css.button_login}
+          sx={{ color: '#fff' }}
+          type="submit"
+          variant="outlined"
+        >
+          Let`s go!
+        </Button>
       </form>
-      <h1>Register if you don't have an account yet </h1>
+      <h6 className={css.reminder}>
+        *Register if you don't have an account yet{' '}
+      </h6>
     </div>
   );
 };
