@@ -4,7 +4,6 @@ import {
   signUpUserThunk,
   userLogOutThunk,
 } from './thunk';
-
 const { createSlice } = require('@reduxjs/toolkit');
 
 const initialState = {
