@@ -3,19 +3,8 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import css from './Login.module.css';
-import { Button, TextField } from '@mui/material';
-import { createTheme } from '@mui/material/styles';
+import { Button } from '@mui/material';
 
-const theme = createTheme({
-  palette: {
-    ochre: {
-      main: '#E3D026',
-      light: '#E9DB5D',
-      dark: '#A29415',
-      contrastText: '#242105',
-    },
-  },
-});
 const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
